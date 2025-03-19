@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "scss-compiler.compile-all",
-        "title": "Compile all files"
+        "command": "scss-compiler.compile-test",
+        "title": "Compile test file"
       }
     ]
   },

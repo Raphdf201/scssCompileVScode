@@ -48,11 +48,18 @@ function activate(context) {
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with registerCommand
     // The commandId parameter must match the command field in package.json
-    const disposable = vscode.commands.registerCommand('scss-compiler.compile-all', () => {
+    const disposable = vscode.commands.registerCommand("scss-compiler.compile-test", () => {
         // The code you place here will be executed every time your command is executed
         // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World from scss compiler!');
-        console.log((0, compiler_1.compileSCSS)("scssCompileVScode/test.scss"));
+        vscode.window.showInformationMessage("Compiling SCSS...");
+        const workspaceFolders = vscode.workspace.workspaceFolders;
+        if (workspaceFolders && workspaceFolders.length > 0) {
+            const workspacePath = workspaceFolders[0].uri.fsPath + "/";
+            (0, compiler_1.compileAndWrite)(workspacePath + "test.scss");
+        }
+        else {
+            vscode.window.showInformationMessage("No workspace folder is open.");
+        }
     });
     context.subscriptions.push(disposable);
 }
