@@ -18,7 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
 		vscode.window.showInformationMessage('Hello World from scss compiler!');
-		console.log(compileSCSS("scssCompileVScode/test.scss"));
+		console.log(compileSCSS("test.scss"));
 	});
 
 	context.subscriptions.push(disposable);
