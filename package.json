@@ -20,17 +20,21 @@
       {
         "command": "scss-compiler.compile-current-file",
         "title": "Compile current file"
+      },
+      {
+        "command": "scss-compiler.show-settings",
+        "title": "Print settings"
       }
     ],
     "configuration": {
-      "title": "SCSS Compiler settings",
+      "title": "SCSS compiler",
       "properties": {
         "scss-compiler.minify": {
           "type": "boolean",
           "default": false,
           "description": "Minify (compress) the output CSS, will put the whole CSS in one line"
         },
-        "scss-compiler.compileOnSave": {
+        "scss-compiler.compile-on-save": {
           "type": "boolean",
           "default": false,
           "description": "Compile SCSS files on save"

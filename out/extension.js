@@ -37,19 +37,10 @@ exports.activate = activate;
 exports.deactivate = deactivate;
 const vscode = __importStar(require("vscode"));
 const compiler_1 = require("./compiler");
+const compileAll_1 = require("./commands/compileAll");
 function activate(context) {
     console.log("scss-compile enabled");
-    const compileAll = vscode.commands.registerCommand("scss-compiler.compile-all", async () => {
-        vscode.window.showInformationMessage("Compiling all SCSS and SASS files...");
-        const files = await vscode.workspace.findFiles("**/*.{scss,sass}");
-        if (files.length === 0) {
-            vscode.window.showInformationMessage("No SCSS or SASS files found in the workspace.");
-            return;
-        }
-        (0, compiler_1.compileAndWriteAll)(files);
-        vscode.window.showInformationMessage("Compilation completed.");
-    });
-    const compileCurrent = vscode.commands.registerCommand("scss-compiler.compile-current-file", () => {
+    context.subscriptions.push(compileAll_1.compileAll, vscode.commands.registerCommand("scss-compiler.compile-current-file", () => {
         const editor = vscode.window.activeTextEditor;
         if (!editor) {
             vscode.window.showInformationMessage("No active text editor found.");
@@ -63,17 +54,21 @@ function activate(context) {
         vscode.window.showInformationMessage("Compiling file : " + filePath);
         (0, compiler_1.compileAndWrite)(filePath);
         vscode.window.showInformationMessage("Compilation completed.");
-    });
-    const onSaveListener = vscode.workspace.onDidSaveTextDocument((document) => {
-        if (vscode.workspace.getConfiguration("scssCompiler").get("compileOnSave")
+    }), vscode.commands.registerCommand("scss-compiler.show-settings", () => {
+        vscode.window.showInformationMessage("Minify : " + vscode.workspace.getConfiguration("scss-compiler").get("minify"));
+        vscode.window.showInformationMessage("Compile on save : " + vscode.workspace.getConfiguration("scss-compiler").get("compile-on-save"));
+    }), vscode.workspace.onDidSaveTextDocument((document) => {
+        if (vscode.workspace.getConfiguration("scss-compiler").get("compile-on-save")
             && (document.fileName.endsWith(".scss")
                 || document.fileName.endsWith(".sass"))) {
             vscode.window.showInformationMessage("Compiling file : " + document.fileName);
             (0, compiler_1.compileAndWrite)(document.fileName);
             vscode.window.showInformationMessage("Compilation completed.");
         }
-    });
-    context.subscriptions.push(compileAll, compileCurrent, onSaveListener);
+        else {
+            vscode.window.showInformationMessage("File not compiled : " + document.fileName);
+        }
+    }));
 }
 function deactivate() {
     console.log("scss-compile disabled");
