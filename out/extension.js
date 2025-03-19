@@ -35,33 +35,29 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.activate = activate;
 exports.deactivate = deactivate;
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 const vscode = __importStar(require("vscode"));
 const compiler_1 = require("./compiler");
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 function activate(context) {
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "scss-compiler" is now active!');
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with registerCommand
-    // The commandId parameter must match the command field in package.json
-    const disposable = vscode.commands.registerCommand("scss-compiler.compile-test", () => {
-        // The code you place here will be executed every time your command is executed
-        // Display a message box to the user
-        vscode.window.showInformationMessage("Compiling SCSS...");
-        const workspaceFolders = vscode.workspace.workspaceFolders;
-        if (workspaceFolders && workspaceFolders.length > 0) {
-            const workspacePath = workspaceFolders[0].uri.fsPath + "/";
-            (0, compiler_1.compileAndWrite)(workspacePath + "test.scss");
+    console.log("scss-compile enabled");
+    const compileAll = vscode.commands.registerCommand("scss-compiler.compile-all", async () => {
+        vscode.window.showInformationMessage("Compiling all SCSS and SASS files...");
+        // Find all .scss and .sass files in the workspace
+        const files = await vscode.workspace.findFiles("**/*.{scss,sass}");
+        if (files.length === 0) {
+            vscode.window.showInformationMessage("No SCSS or SASS files found in the workspace.");
+            return;
         }
-        else {
-            vscode.window.showInformationMessage("No workspace folder is open.");
-        }
+        // Compile each file
+        files.forEach((file) => {
+            const filePath = file.fsPath;
+            console.log(`Compiling: ${filePath}`);
+            (0, compiler_1.compileAndWrite)(filePath);
+        });
+        vscode.window.showInformationMessage("Compilation completed.");
     });
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(compileAll);
 }
 // This method is called when your extension is deactivated
 function deactivate() {
