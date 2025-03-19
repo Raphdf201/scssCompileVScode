@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { compileAndWrite } from "./compiler";
+import { compileAndWrite, compileAndWriteAll } from "./compiler";
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log("scss-compile enabled");
@@ -13,11 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 
-		files.forEach((file) => {
-			const filePath = file.fsPath;
-			console.log(`Compiling: ${filePath}`);
-			compileAndWrite(filePath);
-		});
+		compileAndWriteAll(files);
 
 		vscode.window.showInformationMessage("Compilation completed.");
 	});
@@ -34,12 +30,22 @@ export function activate(context: vscode.ExtensionContext) {
 			vscode.window.showInformationMessage("Current file is not a SCSS or SASS file.");
 			return;
 		}
-
+		vscode.window.showInformationMessage("Compiling file : " + filePath);
 		compileAndWrite(filePath);
 		vscode.window.showInformationMessage("Compilation completed.");
 	});
 
-	context.subscriptions.push(compileAll, compileCurrent);
+	const onSaveListener = vscode.workspace.onDidSaveTextDocument((document) => {
+		if (vscode.workspace.getConfiguration("scssCompiler").get<boolean>("compileOnSave")
+				&& (document.fileName.endsWith(".scss")
+				|| document.fileName.endsWith(".sass"))) {
+			vscode.window.showInformationMessage("Compiling file : " + document.fileName);
+			compileAndWrite(document.fileName);
+			vscode.window.showInformationMessage("Compilation completed.");
+		}
+	});
+
+	context.subscriptions.push(compileAll, compileCurrent, onSaveListener);
 }
 
 export function deactivate() {

@@ -1,7 +1,7 @@
 {
   "name": "scss-compiler",
-  "displayName": "scss compiler",
-  "description": "It can compile all the scss and sass files in your project automatically when you save",
+  "displayName": "SCSS compiler",
+  "description": "It can compile all the scss and sass files in your project",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.98.0"
@@ -21,7 +21,22 @@
         "command": "scss-compiler.compile-current-file",
         "title": "Compile current file"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "SCSS Compiler settings",
+      "properties": {
+        "scss-compiler.minify": {
+          "type": "boolean",
+          "default": false,
+          "description": "Minify (compress) the output CSS, will put the whole CSS in one line"
+        },
+        "scss-compiler.compileOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "Compile SCSS files on save"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

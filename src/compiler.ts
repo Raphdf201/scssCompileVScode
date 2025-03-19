@@ -8,7 +8,11 @@ const sass = require('sass');
  * @returns the compiled css
  */
 export function compileSCSS(path: string): string {
-    return sass.compile(path).css;
+    if (vscode.workspace.getConfiguration("scss-compiler").get<boolean>("minify")) {
+        return sass.compile(path, {style: "compressed"}).css;
+    } else {
+        return sass.compile(path, {style: "expanded"}).css;
+    }
 }
 
 /**
@@ -19,4 +23,12 @@ export function compileAndWrite(path: string) {
     const css = compileSCSS(path);
     const cssPath = path.replace(/\.[^/.]+$/, ".css");
     vscode.workspace.fs.writeFile(vscode.Uri.file(cssPath), Buffer.from(css));
+}
+
+export function compileAndWriteAll(files: vscode.Uri[]) {
+    files.forEach((file) => {
+        const filePath = file.fsPath;
+        console.log(`Compiling: ${filePath}`);
+        compileAndWrite(filePath);
+    });
 }

@@ -35,6 +35,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.compileSCSS = compileSCSS;
 exports.compileAndWrite = compileAndWrite;
+exports.compileAndWriteAll = compileAndWriteAll;
 const vscode = __importStar(require("vscode"));
 const sass = require('sass');
 /**
@@ -43,7 +44,12 @@ const sass = require('sass');
  * @returns the compiled css
  */
 function compileSCSS(path) {
-    return sass.compile(path).css;
+    if (vscode.workspace.getConfiguration("scss-compiler").get("minify")) {
+        return sass.compile(path, { style: "compressed" }).css;
+    }
+    else {
+        return sass.compile(path, { style: "expanded" }).css;
+    }
 }
 /**
  * Compiles a scss or sass file to css using sass and write the result to a file of the same name with a .css extension
@@ -53,5 +59,12 @@ function compileAndWrite(path) {
     const css = compileSCSS(path);
     const cssPath = path.replace(/\.[^/.]+$/, ".css");
     vscode.workspace.fs.writeFile(vscode.Uri.file(cssPath), Buffer.from(css));
+}
+function compileAndWriteAll(files) {
+    files.forEach((file) => {
+        const filePath = file.fsPath;
+        console.log(`Compiling: ${filePath}`);
+        compileAndWrite(filePath);
+    });
 }
 //# sourceMappingURL=compiler.js.map

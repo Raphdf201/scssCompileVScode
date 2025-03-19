@@ -46,11 +46,7 @@ function activate(context) {
             vscode.window.showInformationMessage("No SCSS or SASS files found in the workspace.");
             return;
         }
-        files.forEach((file) => {
-            const filePath = file.fsPath;
-            console.log(`Compiling: ${filePath}`);
-            (0, compiler_1.compileAndWrite)(filePath);
-        });
+        (0, compiler_1.compileAndWriteAll)(files);
         vscode.window.showInformationMessage("Compilation completed.");
     });
     const compileCurrent = vscode.commands.registerCommand("scss-compiler.compile-current-file", () => {
@@ -64,10 +60,20 @@ function activate(context) {
             vscode.window.showInformationMessage("Current file is not a SCSS or SASS file.");
             return;
         }
+        vscode.window.showInformationMessage("Compiling file : " + filePath);
         (0, compiler_1.compileAndWrite)(filePath);
         vscode.window.showInformationMessage("Compilation completed.");
     });
-    context.subscriptions.push(compileAll, compileCurrent);
+    const onSaveListener = vscode.workspace.onDidSaveTextDocument((document) => {
+        if (vscode.workspace.getConfiguration("scssCompiler").get("compileOnSave")
+            && (document.fileName.endsWith(".scss")
+                || document.fileName.endsWith(".sass"))) {
+            vscode.window.showInformationMessage("Compiling file : " + document.fileName);
+            (0, compiler_1.compileAndWrite)(document.fileName);
+            vscode.window.showInformationMessage("Compilation completed.");
+        }
+    });
+    context.subscriptions.push(compileAll, compileCurrent, onSaveListener);
 }
 function deactivate() {
     console.log("scss-compile disabled");
