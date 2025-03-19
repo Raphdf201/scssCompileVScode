@@ -37,19 +37,15 @@ exports.activate = activate;
 exports.deactivate = deactivate;
 const vscode = __importStar(require("vscode"));
 const compiler_1 = require("./compiler");
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 function activate(context) {
     console.log("scss-compile enabled");
     const compileAll = vscode.commands.registerCommand("scss-compiler.compile-all", async () => {
         vscode.window.showInformationMessage("Compiling all SCSS and SASS files...");
-        // Find all .scss and .sass files in the workspace
         const files = await vscode.workspace.findFiles("**/*.{scss,sass}");
         if (files.length === 0) {
             vscode.window.showInformationMessage("No SCSS or SASS files found in the workspace.");
             return;
         }
-        // Compile each file
         files.forEach((file) => {
             const filePath = file.fsPath;
             console.log(`Compiling: ${filePath}`);
@@ -57,9 +53,22 @@ function activate(context) {
         });
         vscode.window.showInformationMessage("Compilation completed.");
     });
-    context.subscriptions.push(compileAll);
+    const compileCurrent = vscode.commands.registerCommand("scss-compiler.compile-current-file", () => {
+        const editor = vscode.window.activeTextEditor;
+        if (!editor) {
+            vscode.window.showInformationMessage("No active text editor found.");
+            return;
+        }
+        const filePath = editor.document.fileName;
+        if (!filePath.endsWith(".scss") && !filePath.endsWith(".sass")) {
+            vscode.window.showInformationMessage("Current file is not a SCSS or SASS file.");
+            return;
+        }
+        (0, compiler_1.compileAndWrite)(filePath);
+        vscode.window.showInformationMessage("Compilation completed.");
+    });
+    context.subscriptions.push(compileAll, compileCurrent);
 }
-// This method is called when your extension is deactivated
 function deactivate() {
     console.log("scss-compile disabled");
 }

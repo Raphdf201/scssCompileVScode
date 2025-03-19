@@ -16,6 +16,10 @@
       {
         "command": "scss-compiler.compile-all",
         "title": "Compile all files"
+      },
+      {
+        "command": "scss-compiler.compile-current-file",
+        "title": "Compile current file"
       }
     ]
   },
