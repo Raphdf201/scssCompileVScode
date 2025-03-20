@@ -2,6 +2,7 @@
   "name": "scss-compiler",
   "displayName": "SCSS compiler",
   "description": "It can compile all the scss and sass files in your project",
+  "publisher": "raphdf201",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/raphdf201/SCSSCompileVSCode.git"},
