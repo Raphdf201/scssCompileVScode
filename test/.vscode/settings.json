@@ -1,3 +1,4 @@
 {
-    "scss-compiler.compile-on-save": true
+    "scss-compiler.compile-on-save": true,
+    "scss-compiler.minify": false
 }
