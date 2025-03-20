@@ -11,8 +11,5 @@ function compileOnSave(document) {
         (0, compiler_1.compileAndWrite)(document.fileName);
         vscode_1.window.showInformationMessage("Compilation completed.");
     }
-    else {
-        vscode_1.window.showInformationMessage("File not compiled : " + document.fileName);
-    }
 }
 //# sourceMappingURL=compileOnSave.js.map

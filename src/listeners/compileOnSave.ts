@@ -8,7 +8,5 @@ export function compileOnSave(document: TextDocument) {
         window.showInformationMessage("Compiling file : " + document.fileName);
         compileAndWrite(document.fileName);
         window.showInformationMessage("Compilation completed.");
-    } else {
-        window.showInformationMessage("File not compiled : " + document.fileName);
     }
 }

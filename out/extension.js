@@ -38,10 +38,8 @@ exports.deactivate = deactivate;
 const commands = __importStar(require("./commands/commands"));
 const listeners = __importStar(require("./listeners/listeners"));
 function activate(context) {
-    console.log("scss-compile enabled");
-    context.subscriptions.push(commands.compileAll, commands.compileCurrent, commands.showSettings, listeners.onSave);
+    context.subscriptions.push(commands.compileAll, commands.compileCurrent, listeners.onSave);
 }
 function deactivate() {
-    console.log("scss-compile disabled");
 }
 //# sourceMappingURL=extension.js.map
