@@ -1,4 +1,4 @@
-import * as vscode from 'vscode';
+import { workspace, Uri } from 'vscode';
 
 const sass = require('sass');
 
@@ -8,10 +8,10 @@ const sass = require('sass');
  * @returns the compiled css
  */
 export function compileSCSS(path: string): string {
-    if (vscode.workspace.getConfiguration("scss-compiler").get<boolean>("minify")) {
-        return sass.compile(path, {style: "compressed"}).css;
+    if (workspace.getConfiguration("scss-compiler").get<boolean>("minify")) {
+        return sass.compile(path, { style: "compressed" }).css;
     } else {
-        return sass.compile(path, {style: "expanded"}).css;
+        return sass.compile(path, { style: "expanded" }).css;
     }
 }
 
@@ -22,13 +22,12 @@ export function compileSCSS(path: string): string {
 export function compileAndWrite(path: string) {
     const css = compileSCSS(path);
     const cssPath = path.replace(/\.[^/.]+$/, ".css");
-    vscode.workspace.fs.writeFile(vscode.Uri.file(cssPath), Buffer.from(css));
+    workspace.fs.writeFile(Uri.file(cssPath), Buffer.from(css));
 }
 
-export function compileAndWriteAll(files: vscode.Uri[]) {
+export function compileAndWriteAll(files: Uri[]) {
     files.forEach((file) => {
         const filePath = file.fsPath;
-        console.log(`Compiling: ${filePath}`);
         compileAndWrite(filePath);
     });
 }

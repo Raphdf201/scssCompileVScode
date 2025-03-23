@@ -1,4 +1,4 @@
-import { workspace, window } from "vscode";
+import { workspace } from "vscode";
 import { compileOnSave } from "./compileOnSave";
 
 export const onSave = workspace.onDidSaveTextDocument((document) => {

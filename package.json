@@ -5,8 +5,9 @@
   "publisher": "raphdf201",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/raphdf201/SCSSCompileVSCode.git"},
-  "version": "0.0.1",
+    "url": "git+https://github.com/raphdf201/SCSSCompileVSCode.git"
+  },
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.98.0"
   },
@@ -24,10 +25,6 @@
       {
         "command": "scss-compiler.compile-current-file",
         "title": "Compile current file"
-      },
-      {
-        "command": "scss-compiler.show-settings",
-        "title": "Print settings"
       }
     ],
     "configuration": {
@@ -42,6 +39,16 @@
           "type": "boolean",
           "default": false,
           "description": "Compile SCSS files on save"
+        },
+        "scss-compiler.compile-all-on-save": {
+          "type": "boolean",
+          "default": false,
+          "description": "Compile all the scss and sass files on save instead of only the current one"
+        },
+        "scss-compiler.send-messages": {
+          "type": "boolean",
+          "default": true,
+          "description": "log messages"
         }
       }
     }
@@ -55,17 +62,16 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
     "@types/vscode": "^1.98.0",
-    "@typescript-eslint/eslint-plugin": "^8.25.0",
-    "@typescript-eslint/parser": "^8.25.0",
-    "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1",
-    "eslint": "^9.21.0",
-    "typescript": "^5.7.3"
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "@vscode/test-cli": "latest",
+    "@vscode/test-electron": "latest",
+    "eslint": "latest",
+    "typescript": "latest"
   },
   "dependencies": {
-    "sass": "^1.86.0"
+    "sass": "latest"
   }
 }

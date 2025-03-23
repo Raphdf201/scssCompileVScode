@@ -9,23 +9,34 @@ A simple extension to compile sass or scss files to css in your project.
 - Compile on save
 - Minify setting
 
-## Coming soon
-
-- Compile all files on save
-
 ## Extension Settings
 
 This extension contributes the following settings:
 
-* `scss-compiler.minify`: Enable/disable minifying(the output is all on a single line)
-* `scss-compiler.compile-on-save`: Compile the current file on save
+- `scss-compiler.minify`: Enable/disable minifying(the output is all on a single line)
+- `scss-compiler.compile-on-save`: Compile the current file on save
+- `scss-compiler.compile-all-on-save`: Compile all the files on save instead of only the current one
+- `scss-compiler.send-messages`: Show info messages when compiling files
 
-## Release Notes
+## Changelog
 
-Users appreciate release notes as you update your extension.
+### 0.0.1
 
-### 1.0.0
+Initial release.
 
-Initial release
+Settings :
 
----
+- minify
+- compile on save
+
+Commands :
+
+- compile all
+- compile current
+
+### 0.0.2
+
+Added settings :
+
+- compile all on save
+- send log messages
