@@ -19,6 +19,6 @@ export async function compileOnSave(document: TextDocument) {
         compileAndWrite(document.fileName);
         log("Compilation completed.");
     } else {
-        log("Did not compile any file")
+        log("Did not compile any file");
     }
 }
