@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.compileOnSave = compileOnSave;
 const vscode_1 = require("vscode");
-const utils_1 = require("../utils/utils");
+const utils_1 = require("../utils");
 async function compileOnSave(document) {
     const canCompile = vscode_1.workspace.getConfiguration("scss-compiler").get("compile-on-save")
         && (document.fileName.endsWith(".scss")

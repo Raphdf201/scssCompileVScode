@@ -35,11 +35,13 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.activate = activate;
 exports.deactivate = deactivate;
-const commands = __importStar(require("./commands/commands"));
-const listeners = __importStar(require("./listeners/listeners"));
+const commands = __importStar(require("./commands"));
+const listeners = __importStar(require("./listeners"));
+const utils_1 = require("./utils");
 function activate(context) {
     context.subscriptions.push(commands.compileAll, commands.compileCurrent, listeners.onSave);
 }
 function deactivate() {
+    (0, utils_1.log)("SCSS Compiler disabled");
 }
 //# sourceMappingURL=extension.js.map

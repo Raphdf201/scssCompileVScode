@@ -1,8 +1,9 @@
-import * as vscode from "vscode";
-import * as commands from "./commands/commands";
-import * as listeners from "./listeners/listeners";
+import * as commands from "./commands";
+import * as listeners from "./listeners";
+import { log } from "./utils";
+import { ExtensionContext } from "vscode";
 
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: ExtensionContext) {
 	context.subscriptions.push(
 		commands.compileAll,
 		commands.compileCurrent,
@@ -10,4 +11,5 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 export function deactivate() {
+	log("SCSS Compiler disabled");
 }

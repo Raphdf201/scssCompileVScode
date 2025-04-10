@@ -1,5 +1,5 @@
 import { commands, window } from "vscode";
-import { compileAndWrite, log } from "../utils/utils";
+import { compileAndWrite, log } from "../utils";
 
 export const compileCurrent = commands.registerCommand("scss-compiler.compile-current-file", () => {
     const editor = window.activeTextEditor;

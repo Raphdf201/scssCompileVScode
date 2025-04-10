@@ -1,5 +1,5 @@
 import { workspace, window, TextDocument } from "vscode";
-import { compileAndWrite, compileAndWriteAll, log } from "../utils/utils";
+import { compileAndWrite, compileAndWriteAll, log } from "../utils";
 
 export async function compileOnSave(document: TextDocument) {
     const canCompile = workspace.getConfiguration("scss-compiler").get<boolean>("compile-on-save")
