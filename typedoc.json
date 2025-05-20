@@ -1,0 +1,6 @@
+{
+  "entryPoints": ["src/extension.ts"],
+  "out": "docs",
+  "includeVersion": true,
+  "excludePrivate": true
+}
