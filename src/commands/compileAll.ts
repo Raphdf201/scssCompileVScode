@@ -1,6 +1,9 @@
 import { commands, workspace, window } from "vscode";
 import { compileAndWriteAll, log } from "../utils";
 
+/**
+ * Compile all of the scss files in the workspace
+ */
 export const compileAll = commands.registerCommand("scss-compiler.compile-all", async () => {
     log("Compiling all SCSS and SASS files...");
 

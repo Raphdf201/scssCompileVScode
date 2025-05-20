@@ -1,5 +1,5 @@
 {
-  "entryPoints": ["src/extension.ts"],
+  "entryPoints": ["src/*.ts"],
   "out": "docs",
   "includeVersion": true,
   "excludePrivate": true

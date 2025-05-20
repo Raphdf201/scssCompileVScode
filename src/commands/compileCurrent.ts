@@ -1,6 +1,9 @@
 import { commands, window } from "vscode";
 import { compileAndWrite, log } from "../utils";
 
+/**
+ * Compile the file that is currently being edited by the user
+ */
 export const compileCurrent = commands.registerCommand("scss-compiler.compile-current-file", () => {
     const editor = window.activeTextEditor;
     if (!editor) {

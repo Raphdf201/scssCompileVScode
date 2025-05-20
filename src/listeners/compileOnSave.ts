@@ -1,6 +1,10 @@
 import { workspace, window, TextDocument } from "vscode";
 import { compileAndWrite, compileAndWriteAll, log } from "../utils";
 
+/**
+ * Compiles the current or all the files depending on the settings when saving
+ * @param document the current file
+ */
 export async function compileOnSave(document: TextDocument) {
     const canCompile = workspace.getConfiguration("scss-compiler").get<boolean>("compile-on-save")
         && (document.fileName.endsWith(".scss")

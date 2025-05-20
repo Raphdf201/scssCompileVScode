@@ -1,6 +1,11 @@
-# scss-compiler README
+# SCSS-compiler
+
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/raphdf201/scsscompilevscode/nodejs.yml)
 
 A simple extension to compile sass or scss files to css in your project.
+
+[my website](https://raphdf.ddns.net/javadocs/scsscompilevscode/index.html)
+[extension github](https://github.com/Raphdf201/scssCompileVScode)
 
 ## Features
 
@@ -40,3 +45,7 @@ Added settings :
 
 - compile all on save
 - send log messages
+
+### 0.0.3
+
+Update dependencies and add code documentation
