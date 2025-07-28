@@ -5,7 +5,6 @@ import { ExtensionContext } from "vscode";
 
 /**
  * Ran when the extension is activated
- * @param context An extension context is a collection of utilities private to an extension.
  */
 export function activate(context: ExtensionContext) {
 	log("SCSS Compiler enabled");

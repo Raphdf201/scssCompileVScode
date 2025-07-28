@@ -1,11 +1,13 @@
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
+import tsdoc from "eslint-plugin-tsdoc";
 
 export default [{
-    files: ["**/*.ts"],
+    files: ["src/**/*.ts"],
 }, {
     plugins: {
         "@typescript-eslint": typescriptEslint,
+        tsdoc
     },
 
     languageOptions: {
@@ -19,6 +21,8 @@ export default [{
             selector: "import",
             format: ["camelCase", "PascalCase"],
         }],
+
+        "tsdoc/syntax": "warn",
 
         curly: "warn",
         eqeqeq: "warn",

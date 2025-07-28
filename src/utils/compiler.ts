@@ -3,7 +3,7 @@ import { compile } from 'sass';
 
 /**
  * Compiles a scss or sass file to css using sass
- * @param path the path to the scss or sass file to compile
+ * @param path - the path to the scss or sass file to compile
  * @returns the compiled css
  */
 export function compileSCSS(path: string): string {
@@ -16,7 +16,7 @@ export function compileSCSS(path: string): string {
 
 /**
  * Compiles a scss or sass file to css using sass and write the result to a file of the same name with a .css extension
- * @param path the path to the scss or sass file to compile
+ * @param path - the path to the scss or sass file to compile
  */
 export function compileAndWrite(path: string) {
     const css = compileSCSS(path);
@@ -26,7 +26,7 @@ export function compileAndWrite(path: string) {
 
 /**
  * Compiles all provided files and writes a .css file of the same name in the same directory
- * @param files 
+ * @param files - the array of scss or sass files to compile
  */
 export function compileAndWriteAll(files: Uri[]) {
     files.forEach((file) => {
