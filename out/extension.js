@@ -38,9 +38,18 @@ exports.deactivate = deactivate;
 const commands = __importStar(require("./commands"));
 const listeners = __importStar(require("./listeners"));
 const utils_1 = require("./utils");
+/**
+ * Ran when the extension is activated
+ * @param context An extension context is a collection of utilities private to an extension.
+ */
 function activate(context) {
+    (0, utils_1.log)("SCSS Compiler enabled");
+    (0, utils_1.log)("Logging can be disabled by changing the scss-compiler.send-messages setting");
     context.subscriptions.push(commands.compileAll, commands.compileCurrent, listeners.onSave);
 }
+/**
+ * Ran when the extension is disabled
+ */
 function deactivate() {
     (0, utils_1.log)("SCSS Compiler disabled");
 }

@@ -8,6 +8,8 @@ import { ExtensionContext } from "vscode";
  * @param context An extension context is a collection of utilities private to an extension.
  */
 export function activate(context: ExtensionContext) {
+	log("SCSS Compiler enabled");
+	log("Logging can be disabled by changing the scss-compiler.send-messages setting");
 	context.subscriptions.push(
 		commands.compileAll,
 		commands.compileCurrent,

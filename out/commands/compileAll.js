@@ -3,6 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.compileAll = void 0;
 const vscode_1 = require("vscode");
 const utils_1 = require("../utils");
+/**
+ * Compile all of the scss files in the workspace
+ */
 exports.compileAll = vscode_1.commands.registerCommand("scss-compiler.compile-all", async () => {
     (0, utils_1.log)("Compiling all SCSS and SASS files...");
     const files = await vscode_1.workspace.findFiles("**/*.{scss,sass}");

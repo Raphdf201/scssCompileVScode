@@ -3,6 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.compileCurrent = void 0;
 const vscode_1 = require("vscode");
 const utils_1 = require("../utils");
+/**
+ * Compile the file that is currently being edited by the user
+ */
 exports.compileCurrent = vscode_1.commands.registerCommand("scss-compiler.compile-current-file", () => {
     const editor = vscode_1.window.activeTextEditor;
     if (!editor) {

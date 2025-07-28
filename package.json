@@ -9,7 +9,7 @@
   },
   "version": "0.0.3",
   "engines": {
-    "vscode": "^1.98.0"
+    "vscode": "^1.95.0"
   },
   "categories": [
     "Other"
@@ -62,8 +62,8 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/node": "24.x",
-    "@types/vscode": "^1.98.0",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.95.0",
     "@typescript-eslint/eslint-plugin": "^8.38.0",
     "@typescript-eslint/parser": "^8.38.0",
     "eslint": "^9.32.0",
