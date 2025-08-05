@@ -68,7 +68,7 @@
     "eslint-plugin-tsdoc": "^0.4.0",
     "@typescript-eslint/parser": "^8.38.0",
     "eslint": "^9.32.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "dependencies": {
     "sass": "^1.89.2"
