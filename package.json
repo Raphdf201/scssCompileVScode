@@ -7,9 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/raphdf201/SCSSCompileVSCode.git"
   },
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
-    "vscode": "^1.97.2"
+    "vscode": "^1.86.2"
   },
   "categories": [
     "Programming Languages",
@@ -63,7 +63,7 @@
   },
   "devDependencies": {
     "@types/node": "22.x",
-    "@types/vscode": "^1.97.2",
+    "@types/vscode": "^1.86.2",
     "@typescript-eslint/eslint-plugin": "^8.46.0",
     "eslint-plugin-tsdoc": "^0.4.0",
     "@typescript-eslint/parser": "^8.45.0",

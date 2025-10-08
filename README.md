@@ -25,6 +25,10 @@ This extension contributes the following settings:
 
 ## Changelog
 
+### 0.0.4
+
+Fix broken commands
+
 ### 0.0.3
 
 Update dependencies and add code documentation
