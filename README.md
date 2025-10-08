@@ -4,7 +4,7 @@
 
 A simple extension to compile sass or scss files to css in your project.
 
-[my website](https://raphdf.ddns.net/javadocs/scsscompilevscode/index.html)
+[my website](https://docs.raphdf201.net/scsscompilevscode/)
 [extension github](https://github.com/Raphdf201/scssCompileVScode)
 
 ## Features
@@ -25,6 +25,17 @@ This extension contributes the following settings:
 
 ## Changelog
 
+### 0.0.3
+
+Update dependencies and add code documentation
+
+### 0.0.2
+
+Added settings :
+
+- compile all on save
+- send log messages
+
 ### 0.0.1
 
 Initial release.
@@ -38,14 +49,3 @@ Commands :
 
 - compile all
 - compile current
-
-### 0.0.2
-
-Added settings :
-
-- compile all on save
-- send log messages
-
-### 0.0.3
-
-Update dependencies and add code documentation

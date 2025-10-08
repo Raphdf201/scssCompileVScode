@@ -9,12 +9,12 @@
   },
   "version": "0.0.3",
   "engines": {
-    "vscode": "^1.95.0"
+    "vscode": "^1.97.2"
   },
   "categories": [
+    "Programming Languages",
     "Other"
   ],
-  "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -63,7 +63,7 @@
   },
   "devDependencies": {
     "@types/node": "22.x",
-    "@types/vscode": "^1.95.0",
+    "@types/vscode": "^1.97.2",
     "@typescript-eslint/eslint-plugin": "^8.46.0",
     "eslint-plugin-tsdoc": "^0.4.0",
     "@typescript-eslint/parser": "^8.45.0",
