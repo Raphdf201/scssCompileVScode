@@ -13,16 +13,16 @@ importers:
         version: 1.93.2
     devDependencies:
       '@types/node':
-        specifier: 22.x
+        specifier: ~22.18.8
         version: 22.18.8
       '@types/vscode':
-        specifier: ^1.97.2
+        specifier: ^1.104.0
         version: 1.104.0
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.46.0
         version: 8.46.0(@typescript-eslint/parser@8.46.0(eslint@9.37.0)(typescript@5.9.3))(eslint@9.37.0)(typescript@5.9.3)
       '@typescript-eslint/parser':
-        specifier: ^8.45.0
+        specifier: ^8.46.0
         version: 8.46.0(eslint@9.37.0)(typescript@5.9.3)
       eslint:
         specifier: ^9.37.0
