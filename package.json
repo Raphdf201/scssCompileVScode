@@ -72,6 +72,6 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "sass": "^1.93.3"
+    "sass": "^1.94.0"
   }
 }
