@@ -1,5 +1,5 @@
-import { workspace, Uri } from 'vscode';
-import { compile } from 'sass';
+import { workspace, Uri } from "vscode";
+import { compile } from "sass";
 
 /**
  * Compiles a scss or sass file to css using sass
@@ -7,11 +7,11 @@ import { compile } from 'sass';
  * @returns the compiled css
  */
 export function compileSCSS(path: string): string {
-    if (workspace.getConfiguration("scss-compiler").get<boolean>("minify")) {
-        return compile(path, { style: "compressed" }).css;
-    } else {
-        return compile(path, { style: "expanded" }).css;
-    }
+  if (workspace.getConfiguration("scss-compiler").get<boolean>("minify")) {
+    return compile(path, { style: "compressed" }).css;
+  } else {
+    return compile(path, { style: "expanded" }).css;
+  }
 }
 
 /**
@@ -19,9 +19,9 @@ export function compileSCSS(path: string): string {
  * @param path - the path to the scss or sass file to compile
  */
 export function compileAndWrite(path: string) {
-    const css = compileSCSS(path);
-    const cssPath = path.replace(/\.[^/.]+$/, ".css");
-    workspace.fs.writeFile(Uri.file(cssPath), Buffer.from(css));
+  const css = compileSCSS(path);
+  const cssPath = path.replace(/\.[^/.]+$/, ".css");
+  workspace.fs.writeFile(Uri.file(cssPath), Buffer.from(css));
 }
 
 /**
@@ -29,8 +29,8 @@ export function compileAndWrite(path: string) {
  * @param files - the array of scss or sass files to compile
  */
 export function compileAndWriteAll(files: Uri[]) {
-    files.forEach((file) => {
-        const filePath = file.fsPath;
-        compileAndWrite(filePath);
-    });
+  files.forEach((file) => {
+    const filePath = file.fsPath;
+    compileAndWrite(filePath);
+  });
 }

@@ -53,10 +53,15 @@ const compileAll = vscode_1.commands.registerCommand("scss-compiler.compile-all"
  * On save listener
  */
 const onSaveListener = vscode_1.workspace.onDidSaveTextDocument(async (document) => {
-    const canCompile = vscode_1.workspace.getConfiguration("scss-compiler").get("compile-on-save")
-        && (document.fileName.endsWith(".scss")
-            || document.fileName.endsWith(".sass"));
-    if (canCompile && vscode_1.workspace.getConfiguration("scss-compiler").get("compile-all-on-save")) {
+    const canCompile = vscode_1.workspace
+        .getConfiguration("scss-compiler")
+        .get("compile-on-save") &&
+        (document.fileName.endsWith(".scss") ||
+            document.fileName.endsWith(".sass"));
+    if (canCompile &&
+        vscode_1.workspace
+            .getConfiguration("scss-compiler")
+            .get("compile-all-on-save")) {
         (0, utils_1.log)("Compiling all SCSS and SASS files...");
         const files = await vscode_1.workspace.findFiles("**/*.{scss,sass}");
         if (files.length === 0) {
