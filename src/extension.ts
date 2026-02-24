@@ -2,7 +2,6 @@ import { compileAndWrite, compileAndWriteAll, log } from "./utils";
 import {
   commands,
   ExtensionContext,
-  TextDocument,
   window,
   workspace,
 } from "vscode";

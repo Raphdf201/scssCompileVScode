@@ -25,6 +25,10 @@ This extension contributes the following settings:
 
 ## Changelog
 
+### 0.0.5
+
+Dependency updates
+
 ### 0.0.4
 
 Fix broken commands
